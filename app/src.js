@@ -8,7 +8,6 @@ app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "../clientSide/views"))
 hbs.registerPartials(path.join(__dirname, "../clientSide/layouts"))
 
-app.get("/", (req, res) => res.render("allBooks"));
 
 
 // Insted of body parser This middleware is available in Express v4.16.0 onwards.

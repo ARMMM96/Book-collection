@@ -1,6 +1,9 @@
 const router = require("express").Router()
+const bookControler = require("../controller/book.controller")
 
-router.get("/", (req, res) => res.render("allBooks"));
+router.get("/", bookControler.allBooks);
+
+console.log(bookControler.allBooks.pageTitle)
 
 router.get("/addBook", (req, res) => res.send("addbook"))
 router.get("/book/:id", (req, res) => res.send(`book id ${req.params.id}`))
