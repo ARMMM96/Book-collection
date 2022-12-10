@@ -11,7 +11,11 @@ hbs.registerPartials(path.join(__dirname, "../clientSide/layouts"))
 app.get("/", (req, res) => res.render("allBooks"));
 
 
+// Insted of body parser This middleware is available in Express v4.16.0 onwards.
+app.use(express.urlencoded({extended:true}))
 
+const booksRoutes = require("./routes/books.routes")
+app.use(booksRoutes) //app.use("/task",taskRoutes)
 
 
 
