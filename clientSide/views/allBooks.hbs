@@ -12,9 +12,10 @@
         </thead>
         <tbody>
             <tr class="">
-                <td></td>
-                <td></td>
-                <td></td>
+                {{#each books}}
+                <td>{{book}}</td>
+                <td>{{author}}</td>
+                <td>{{pages}}</td>
                 <td>
                     <a href="" class="btn btn-primary mx-3">Sort by Name</a>
                     <a href="" class="btn btn-primary mx-3">Sort by Pages number</a>
@@ -22,6 +23,7 @@
                     <a href="/" class="btn btn-warning mx-3">Edit</a>
                     <a href="/" class="btn btn-danger mx-3">Delete</a>
                 </td>
+                {{/each}}
             </tr>
         </tbody>
     </table>
