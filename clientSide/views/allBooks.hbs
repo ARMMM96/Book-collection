@@ -8,8 +8,8 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Book Name <a href="" class="btn btn-primary mx-3">Sort by Name</a> </th>
-                <th>Page numbers <a href="" class="btn btn-primary mx-2">Sort by Pages number</a></th>
+                <th>Book Name <a href="/" class="btn btn-primary mx-3" id="sortByName">Sort by Name</a> </th>
+                <th>Page numbers <a href="/" class="btn btn-primary mx-2" id="sortByPageNumber">Sort by Pages number</a></th>
                 <th>Author</th>
                 <th>Section</th>
                 <th>Actions</th>
@@ -17,8 +17,8 @@
         </thead>
         <tbody>
             {{#each books}}
-            <tr class="">
-                <td>{{name}}</td>
+            <tr class="" id="book">
+                <td >{{name}}</td>
                 <td>{{pages}}</td>
                 <td>{{author}}</td>
                 <td>{{section}}</td>
