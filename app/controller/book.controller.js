@@ -11,17 +11,33 @@ class Book {
         })
     }
 
+    static book = (req, res) => {
+        const books = dealHelper.readFromJSON()
+        const bookIndex = dataHelper.getId(books, "id", req.params.id)
+        if (bookIndex >= 0) {
+            res.render("book", {
+                pageTitle: "Signle book",
+                book: books[bookIndex]
+            })
+        } else res.render('err404', {
+            pageTitle: "Page Not Found",
+            message: "There is no such a ",
+            err: "Invalid url please try again",
+            looking: `${req.url.slice(1)} with that id`
+        });
+    }
+
     static deleteBook = (req, res) => {
         const books = dealHelper.readFromJSON()
         const bookIndex = dataHelper.getId(books, "id", req.params.id)
-        console.log(books)
-        console.log(bookIndex)
-        if (bookIndex >= 0) books.splice(bookIndex, 1)
+        if (bookIndex >= 0) {
+            books.splice(bookIndex, 1)
+        } else {
+            res.redirect("/")
+            return
+        }
         dealHelper.writeToJSON(books)
-        console.log(books)
         res.redirect("/")
-
-
     }
 }
 

@@ -21,6 +21,7 @@ app.use(booksRoutes)
 
 app.all('*', (req,res)=> res.render('err404', {
     pageTitle:"Page Not Found", 
+    message: "There is no such a page ",
     err:"Invalid url please try again",
     looking: `${req.url.slice(1)}`
 }))

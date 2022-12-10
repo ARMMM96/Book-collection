@@ -1,10 +1,6 @@
 {{>header}}
 {{>navbar}}
 <section class="my-5 container">
-    <div>
-        <input class="form-control me-2 mb-3" id="search" type="search" name="search" placeholder="Find a book"
-            aria-label="Search" required />
-    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -15,21 +11,23 @@
                 <th>Actions</th>
             </tr>
         </thead>
+
+
+
         <tbody>
-            {{#each books}}
             <tr class="">
-                <td>{{book}}</td>
-                <td>{{pages}}</td>
-                <td>{{author}}</td>
-                <td>{{section}}</td>
+                <td>{{book.book}}</td>
+                <td>{{book.pages}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.section}}</td>
                 <td>
-                    <a href="/book/{{id}}" class="btn btn-primary mx-3">show</a>
-                    <a href="/edit/{{id}}" class="btn btn-warning mx-3">Edit</a>
-                    <a href="/delete/{{id}}" class="btn btn-danger mx-3">Delete</a>
+                    <a href="/edit/{{book.id}}" class="btn btn-warning mx-3">Edit</a>
+                    <a href="/delete/{{book.id}}" class="btn btn-danger mx-3">Delete</a>
                 </td>
             </tr>
-            {{/each}}
+
         </tbody>
     </table>
+    <a href="/" class="btn btn-primary">Back Home</a>
 </section>
 {{>footer}}
