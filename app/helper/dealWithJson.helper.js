@@ -11,7 +11,7 @@ class DealWithJson {
         return data
     }
 
-    static writeToJSON = (data) => fs.writeFileSync("model/books.json", JSON.stringify(data))
+    static writeToJSON = (data) => fs.writeFileSync(process.env.BOOKSDATA, JSON.stringify(data))
 
 }
 module.exports = DealWithJson

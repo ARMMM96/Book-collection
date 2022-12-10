@@ -6,7 +6,8 @@ class Book {
     static allBooks = (req, res) => {
         const books = dealHelper.readFromJSON()
         res.render("allBooks", {
-            pageTitle: "All book", books,
+            pageTitle: "All book",
+            books,
             hasBooks: books.length
         })
     }
@@ -25,6 +26,17 @@ class Book {
             err: "Invalid url please try again",
             looking: `${req.url.slice(1)} with that id`
         });
+    }
+    static addBook = (req, res) => {
+        res.render("addBook", { pageTitle: "add Task" })
+    }
+    static createBook = (req, res) => {
+        const bookModelRecived = { id: Date.now(), ...req.body }
+        const books = dealHelper.readFromJSON()
+        books.push(bookModelRecived)
+        dealHelper.writeToJSON(books)
+        res.redirect("/")
+
     }
 
     static deleteBook = (req, res) => {
