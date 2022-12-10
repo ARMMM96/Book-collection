@@ -14,11 +14,15 @@ hbs.registerPartials(path.join(__dirname, "../clientSide/layouts"))
 app.use(express.urlencoded({extended:true}))
 
 const booksRoutes = require("./routes/books.routes")
-app.use(booksRoutes) //app.use("/task",taskRoutes)
+
+app.use(booksRoutes)
 
 
 
-app.all('*', (req, res) => res.send('err404'))
-
+app.all('*', (req,res)=> res.render('err404', {
+    pageTitle:"Page Not Found", 
+    err:"Invalid url please try again",
+    looking: `${req.url.slice(1)}`
+}))
 
 module.exports = app
