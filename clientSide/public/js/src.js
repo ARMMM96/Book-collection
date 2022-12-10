@@ -11,11 +11,31 @@ let toggleSort1 = true;
 
 
 
-
 searchForm.addEventListener('keyup', (e) => {
+    const beforeFilter = [];
+
+    booksElements.forEach(element => {
+
+        if (e.target.value.toLowerCase() == "") {
+
+            booksElements.forEach(element => {
+                booksEelmentParent.appendChild(element)
+            })
+        } else {
+            if (element.children[0].innerText.includes(e.target.value.toLowerCase())) {
+
+                booksElements.forEach(element => {
+                    element.remove()
+                })
+
+                booksEelmentParent.appendChild(element)
+            }
+
+        }
+
+    })
 
 
-    console.log(e.target.value);
 })
 
 
