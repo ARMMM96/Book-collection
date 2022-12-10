@@ -51,6 +51,29 @@ class Book {
         dealHelper.writeToJSON(books)
         res.redirect("/")
     }
+
+    static editBook = (req, res) => {
+        const books = dealHelper.readFromJSON()
+        const book = dataHelper.getId(books, "id", req.params.id)
+        res.render("editBook", {
+            pageTitle: "edit page",
+            result: books[book]
+        })
+    }
+
+    static updateBookData = (req, res) => {
+        const books = dealHelper.readFromJSON()
+        const book = dataHelper.getId(books, "id", req.params.id)
+        console.log(req.params.id)
+        if (book == -1) return res.render("err404", { pageTitle: "invalid", err: "invalid id" })
+        const newBook = { id: req.params.id, ...req.body }
+        newBook.status == "on" ? newTask.status = true : newBook.status = false
+        books[book] = newBook
+        dealHelper.writeToJSON(books)
+        res.redirect(`/book/${req.params.id}`)
+    }
+
+
 }
 
 
